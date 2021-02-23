@@ -1,12 +1,12 @@
 use std::str::FromStr;
-
 use lazy_static::lazy_static;
-use regex::{Regex};
+use regex::Regex;
 use rusqlite::{Connection, Error, params};
 use tiny_http::{Header, HeaderField, Request, Response, Server, StatusCode};
 
 fn main() {
     let server = Server::http("0.0.0.0:8678").unwrap();
+    println!("HTTP server is running on {}", server.server_addr());
     let db = Connection::open("otp.sqlite").unwrap();
 
     db.execute(
@@ -93,7 +93,7 @@ fn contains_header(request: &Request, name: &str, value: &str) -> bool {
 
 fn extract_otp(message: &str) -> Option<&str> {
     lazy_static! {
-        static ref OTP_RE: Regex = Regex::new(r"[0-9]+").unwrap();
+        static ref OTP_RE: Regex = Regex::new(r"[0-9]+").expect("Wrong OTP regex");
     }
     let captures = OTP_RE.captures(message).unwrap();
 

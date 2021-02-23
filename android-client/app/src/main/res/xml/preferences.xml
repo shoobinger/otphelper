@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <SwitchPreference
+        app:defaultValue="true"
+        app:iconSpaceReserved="false"
+        app:key="sms_sending_enabled"
+        app:summaryOff="@string/enable_sms_sending_off_summary"
+        app:summaryOn="@string/enable_sms_sending_on_summary"
+        app:title="@string/enable_sms_sending" />
+    <EditTextPreference
+        app:defaultValue="http://192.168.1.100:8678"
+        app:dependency="sms_sending_enabled"
+        app:iconSpaceReserved="false"
+        app:key="server_url"
+        app:singleLine="true"
+        app:title="@string/server_url"
+        app:useSimpleSummaryProvider="true" />
+</PreferenceScreen>
