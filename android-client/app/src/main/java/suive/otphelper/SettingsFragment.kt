@@ -24,7 +24,6 @@ class SettingsFragment : PreferenceFragmentCompat() {
                     ).show()
                     false
                 }
-
             }
     }
 }
