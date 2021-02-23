@@ -3,5 +3,5 @@
     <string name="server_url">Server URL</string>
     <string name="enable_sms_sending">Enable SMS sending</string>
     <string name="enable_sms_sending_on_summary">All incoming SMS messages are sent to the server</string>
-    <string name="enable_sms_sending_off_summary">Incoming SMS messages won't be sent to the server</string>
+    <string name="enable_sms_sending_off_summary">Incoming SMS messages won\'t be sent to the server</string>
 </resources>
