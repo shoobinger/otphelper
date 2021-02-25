@@ -37,6 +37,7 @@ fn main() {
                     continue;
                 }
 
+                otp.clear();
                 request.as_reader().read_to_string(&mut otp).unwrap();
                 return_text(request, &otp).unwrap();
                 continue;
