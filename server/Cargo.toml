@@ -6,6 +6,3 @@ edition = "2018"
 
 [dependencies]
 tiny_http = "0.6"
-rusqlite = "0.24.2"
-regex = "1"
-lazy_static = "1.4.0"

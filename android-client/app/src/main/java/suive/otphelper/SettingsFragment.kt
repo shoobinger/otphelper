@@ -12,7 +12,7 @@ class SettingsFragment : PreferenceFragmentCompat() {
         setPreferencesFromResource(R.xml.preferences, rootKey)
 
         findPreference<Preference>("server_url")?.onPreferenceChangeListener =
-            OnPreferenceChangeListener { preference, newValue ->
+            OnPreferenceChangeListener { _, newValue ->
                 try {
                     URL(newValue.toString())
                     true
