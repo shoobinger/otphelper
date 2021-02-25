@@ -1,13 +1,9 @@
-# Android-to-PC text message relay 
-Access SMS OTP codes from your PC.
+# OTP Helper Android client
 
 ## Usage
-A TCP server will be started on your Android device.
-A client connecting to this server will receive the last text message from your phone inbox.
+1. Install the application.
+2. Give the app an explicit permission to receive and read SMS.
+3. Specify server URL and other connection details.
 
-### Examples using netcat
-`nc -d <IP of the device> <port>`
-
-`nc -d 192.168.1.123 9889 | xargs -I {} notify-send -t 5000 -u normal "Last message" "{}"`  
-`nc -d 192.168.1.123 9889 | xclip -selection clipboard`  
-`nc -d 192.168.1.123 9889 | grep -o -E '[0-9]+' | head -1 | xdotool type --file -`  
+## Notes
+Given an incoming SMS message, the app will try to extract (using a simple `[0-9]+` regex) an OTP code from it, and then send it to the server. It will retry (with an exponential backoff) if a client error or a 5xx server error occurs. If there is no internet connection available at the moment the code is received, the app will wait and the code will be sent as soon as the connection appears.
