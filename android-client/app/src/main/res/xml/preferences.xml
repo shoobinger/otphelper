@@ -5,15 +5,30 @@
         app:defaultValue="true"
         app:iconSpaceReserved="false"
         app:key="sms_sending_enabled"
-        app:summaryOff="@string/enable_sms_sending_off_summary"
-        app:summaryOn="@string/enable_sms_sending_on_summary"
-        app:title="@string/enable_sms_sending" />
-    <EditTextPreference
-        app:defaultValue="http://192.168.1.100:8678"
+        app:summaryOff="@string/enable_otp_sending_off_summary"
+        app:summaryOn="@string/enable_otp_sending_on_summary"
+        app:title="@string/enable_otp_sending" />
+    <PreferenceCategory
         app:dependency="sms_sending_enabled"
         app:iconSpaceReserved="false"
-        app:key="server_url"
-        app:singleLine="true"
-        app:title="@string/server_url"
-        app:useSimpleSummaryProvider="true" />
+        app:title="@string/connection_details">
+        <EditTextPreference
+            app:defaultValue="http://192.168.1.100:8678"
+            app:iconSpaceReserved="false"
+            app:key="server_url"
+            app:singleLine="true"
+            app:title="@string/server_url"
+            app:useSimpleSummaryProvider="true" />
+        <EditTextPreference
+            app:iconSpaceReserved="false"
+            app:key="server_basic_username"
+            app:singleLine="true"
+            app:title="@string/server_basic_username"
+            app:useSimpleSummaryProvider="true" />
+        <EditTextPreference
+            app:iconSpaceReserved="false"
+            app:key="server_basic_password"
+            app:singleLine="true"
+            app:title="@string/server_basic_password" />
+    </PreferenceCategory>
 </PreferenceScreen>

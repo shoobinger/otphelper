@@ -1,7 +1,10 @@
 <resources>
     <string name="app_name">OTP Helper Client</string>
     <string name="server_url">Server URL</string>
-    <string name="enable_sms_sending">Enable SMS sending</string>
-    <string name="enable_sms_sending_on_summary">All incoming SMS messages are sent to the server</string>
-    <string name="enable_sms_sending_off_summary">Incoming SMS messages won\'t be sent to the server</string>
+    <string name="enable_otp_sending">Enable OTP sending</string>
+    <string name="enable_otp_sending_on_summary">OTP codes will be extracted from SMS messages and sent to the server</string>
+    <string name="enable_otp_sending_off_summary">OTP extraction is disabled</string>
+    <string name="connection_details">Connection details</string>
+    <string name="server_basic_username">Server basic username</string>
+    <string name="server_basic_password">Server basic password</string>
 </resources>

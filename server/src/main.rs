@@ -1,10 +1,17 @@
+use std::env;
 use std::io::Error;
 use std::str::FromStr;
 
-use tiny_http::{Header, HeaderField, Request, Response, Server, StatusCode};
+use tiny_http::{Header, HeaderField, Request, Response, Server};
 
 fn main() {
-    let server = Server::http("0.0.0.0:8678").unwrap();
+    let args: Vec<String> = env::args().collect();
+    let addr;
+    match args.len() {
+        1 => addr = "127.0.0.1:8678",
+        _ => addr = &args[1]
+    }
+    let server = Server::http(addr).unwrap();
     println!("HTTP server is running on {}", server.server_addr());
 
     let mut otp = String::from("");

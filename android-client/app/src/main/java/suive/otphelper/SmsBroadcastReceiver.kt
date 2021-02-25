@@ -4,6 +4,7 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.provider.Telephony
+import android.util.Base64
 import android.util.Log
 import androidx.preference.PreferenceManager
 import androidx.work.*
@@ -30,6 +31,8 @@ class SmsBroadcastReceiver : BroadcastReceiver() {
             val serverUrl = requireNotNull(
                 preferences.getString("server_url", DEFAULT_SERVER_URL)
             )
+            val serverUsername = preferences.getString("server_basic_username", null)
+            val serverPassword = preferences.getString("server_basic_password", null)
             val url = URL(serverUrl).toURI().resolve("/otp").toURL()
 
             val otp = inputData.getString(KEY_OTP) ?: return Result.failure()
@@ -43,6 +46,16 @@ class SmsBroadcastReceiver : BroadcastReceiver() {
                 connection.requestMethod = "POST"
                 connection.setRequestProperty("Content-Type", "text/plain")
                 connection.setRequestProperty("Accept", "text/plain")
+
+                if (serverUsername != null && serverPassword != null) {
+                    val authorization = Base64.encode(
+                        "$serverUsername:$serverPassword".toByteArray(),
+                        Base64.DEFAULT
+                    )
+
+                    connection.setRequestProperty("Authorization", "Basic ${String(authorization)}")
+                }
+
                 BufferedOutputStream(connection.outputStream)
                     .apply {
                         write(otp.toByteArray())
